@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://b21nfhxb50vst"]
+
+[ext_resource type="PackedScene" uid="uid://cpam265n8cu5a" path="res://scenes/hero.tscn" id="1_41om0"]
+[ext_resource type="PackedScene" uid="uid://qm8ecqf43b1y" path="res://scenes/tree.tscn" id="2_lwdk1"]
+[ext_resource type="Script" path="res://src/Visibility/VisibilityRendererComponent.cs" id="3_qspr6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gjdfi"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Hero" parent="." instance=ExtResource("1_41om0")]
+
+[node name="tree" parent="." instance=ExtResource("2_lwdk1")]
+position = Vector2(-186, -123)
+rotation = -0.523598
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_gjdfi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="VisibilityRenderer" type="Node2D" parent="."]
+script = ExtResource("3_qspr6")
+
+[node name="tree2" parent="." instance=ExtResource("2_lwdk1")]
+position = Vector2(82, -167)
+rotation = -1.0472
+
+[node name="tree3" parent="." instance=ExtResource("2_lwdk1")]
+position = Vector2(240, -40)
+rotation = -1.57079
+
+[node name="tree4" parent="." instance=ExtResource("2_lwdk1")]
+position = Vector2(117, 146)
+rotation = -2.09439
+
+[node name="tree5" parent="." instance=ExtResource("2_lwdk1")]
+position = Vector2(-178, 23)
+rotation = -2.61799
+
+[node name="tree6" parent="." instance=ExtResource("2_lwdk1")]
+position = Vector2(-78.42, 222.521)
+rotation = -3.14159
