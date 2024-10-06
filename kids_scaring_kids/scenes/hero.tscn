@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpam265n8cu5a"]
+
+[ext_resource type="Texture2D" uid="uid://4q0t73momahe" path="res://img/hero.png" id="1_6u8gm"]
+[ext_resource type="Script" path="res://src/Player/LightCaster.cs" id="1_ldmo7"]
+[ext_resource type="Script" path="res://src/Player/PlayerControlledBrain.cs" id="2_5156x"]
+[ext_resource type="Script" path="res://src/Animation/LinearAnimationComponent.cs" id="3_7qjyu"]
+
+[node name="Hero" type="Node2D" node_paths=PackedStringArray("Animation", "Root")]
+script = ExtResource("1_ldmo7")
+Animation = NodePath("LinearAnimationComponent")
+Root = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6u8gm")
+
+[node name="PlayerControlledBrain" type="Node2D" parent="." node_paths=PackedStringArray("Root", "Animation")]
+script = ExtResource("2_5156x")
+Root = NodePath("..")
+Animation = NodePath("../LinearAnimationComponent")
+
+[node name="LinearAnimationComponent" type="Node" parent="." node_paths=PackedStringArray("Root", "Sprite")]
+script = ExtResource("3_7qjyu")
+Root = NodePath("..")
+Sprite = NodePath("../Sprite2D")
+Speed = 100.0

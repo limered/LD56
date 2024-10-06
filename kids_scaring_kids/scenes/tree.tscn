@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://qm8ecqf43b1y"]
+
+[ext_resource type="Script" path="res://src/Things/StaticOcclusionComponent.cs" id="1_jf2o7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lqku0"]
+radius = 25.02
+
+[node name="tree" type="Node2D"]
+
+[node name="OcclusionComponent" type="Node2D" parent="." node_paths=PackedStringArray("ColliderShape")]
+script = ExtResource("1_jf2o7")
+ColliderShape = NodePath("../Area2D/CollisionShape2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_lqku0")
