@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b21nfhxb50vst"]
+[gd_scene load_steps=13 format=3 uid="uid://b21nfhxb50vst"]
 
 [ext_resource type="PackedScene" uid="uid://cpam265n8cu5a" path="res://scenes/hero.tscn" id="1_41om0"]
 [ext_resource type="Script" path="res://src/Visibility/FullscreenQuadComponent.cs" id="2_3m426"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://src/Visibility/VisibilityRendererComponent.cs" id="3_qspr6"]
 [ext_resource type="PackedScene" uid="uid://8no5y5mmhm65" path="res://scenes/bush.tscn" id="6_fd7kf"]
 [ext_resource type="Script" path="res://src/Creatures/CreatureSpawnerComponent.cs" id="7_2i2f7"]
+[ext_resource type="AudioStream" uid="uid://c25ex86bu7mer" path="res://sound/175205__minigunfiend__scary-creaking-knocking-wood.wav" id="8_ger0m"]
+[ext_resource type="AudioStream" uid="uid://c2xw3flt3xwfj" path="res://sound/121648__halleck__leaf-rustles-quick-from-animals-running-1.wav" id="9_smuis"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a61o1"]
 albedo_color = Color(0, 0, 0, 1)
@@ -235,3 +237,12 @@ scale = Vector2(1.51931, 1.51931)
 
 [node name="Creatures" type="Node" parent="."]
 script = ExtResource("7_2i2f7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ger0m")
+volume_db = -5.0
+autoplay = true
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_smuis")
+autoplay = true
