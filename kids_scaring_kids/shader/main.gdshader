@@ -2,18 +2,24 @@ shader_type canvas_item;
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 uniform sampler2D light_cone_texture : repeat_disable, filter_nearest;
+uniform vec2 hero_position;
+uniform float cone_radius_pixel;
+uniform float cone_feather;
 
 void vertex() {
-	// Called for every vertex the material is visible on.
+}
+
+float circle_mask(vec2 _uv, vec2 _center, float _radius, float _feather) {
+    float dist = length(_uv - _center);
+    return smoothstep(1.0f-_feather, 1.0f , dist/_radius);
 }
 
 void fragment() {
+	vec2 screen_size = vec2(1152, 648);
+	vec2 screen_half_size = screen_size * 0.5f;
 	vec4 game_color = textureLod(screen_texture, SCREEN_UV, 0.0);
 	vec4 cone_color = textureLod(light_cone_texture, SCREEN_UV, 0.0);
-    COLOR = game_color + cone_color;
+	vec2 screen_pixel = (SCREEN_UV - 0.5) * screen_size;
+	float alpha = circle_mask(screen_pixel, hero_position, cone_radius_pixel, cone_feather); 
+    COLOR = cone_color * (1.0f-alpha) + game_color;// game_color + cone_color * alpha; ////
 }
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
