@@ -16,6 +16,9 @@ public partial class PlayerControlledBrain : Node2D
         if(Input.IsActionPressed("Right")) direction += Vector2.Right;
         if(Input.IsActionPressed("Down")) direction += Vector2.Down;
         Animation.MovementDirection = direction;
+        
+        // check against world size
+        
 
         var mousePosition = GetGlobalMousePosition();
         var lookDirection = (mousePosition - Root.GlobalPosition).Normalized();

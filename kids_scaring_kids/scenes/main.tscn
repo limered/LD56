@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b21nfhxb50vst"]
+[gd_scene load_steps=9 format=3 uid="uid://b21nfhxb50vst"]
 
 [ext_resource type="PackedScene" uid="uid://cpam265n8cu5a" path="res://scenes/hero.tscn" id="1_41om0"]
 [ext_resource type="Script" path="res://src/Visibility/FullscreenQuadComponent.cs" id="2_3m426"]
@@ -8,6 +8,19 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pw206"]
 shader = ExtResource("3_0ox7m")
+shader_parameter/hero_position = Vector2(0, 0)
+shader_parameter/cone_radius_pixel = 300.0
+shader_parameter/cone_feather = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a61o1"]
+albedo_color = Color(0, 0, 0.858824, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wivql"]
+material = SubResource("StandardMaterial3D_a61o1")
+size = Vector2(1152, 648)
+subdivide_width = 10
+subdivide_depth = 10
+orientation = 2
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,7 +28,7 @@ shader = ExtResource("3_0ox7m")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("ConeViewport")]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("ConeViewport", "Hero")]
 material = SubResource("ShaderMaterial_pw206")
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +39,7 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_3m426")
 ConeViewport = NodePath("../../SubViewport")
 FullscreenQuadShader = SubResource("ShaderMaterial_pw206")
+Hero = NodePath("../../Hero")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
@@ -40,6 +54,10 @@ script = ExtResource("3_qspr6")
 Polygon2D = NodePath("Polygon2D")
 
 [node name="Polygon2D" type="Polygon2D" parent="SubViewport/VisibilityRenderer"]
+
+[node name="Ground" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+mesh = SubResource("PlaneMesh_wivql")
 
 [node name="Hero" parent="." instance=ExtResource("1_41om0")]
 
