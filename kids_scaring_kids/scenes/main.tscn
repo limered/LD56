@@ -1,35 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://b21nfhxb50vst"]
+[gd_scene load_steps=7 format=3 uid="uid://b21nfhxb50vst"]
 
 [ext_resource type="PackedScene" uid="uid://cpam265n8cu5a" path="res://scenes/hero.tscn" id="1_41om0"]
+[ext_resource type="Script" path="res://src/Visibility/FullscreenQuadComponent.cs" id="2_3m426"]
 [ext_resource type="PackedScene" uid="uid://qm8ecqf43b1y" path="res://scenes/tree.tscn" id="2_lwdk1"]
+[ext_resource type="Shader" path="res://shader/main.gdshader" id="3_0ox7m"]
 [ext_resource type="Script" path="res://src/Visibility/VisibilityRendererComponent.cs" id="3_qspr6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gjdfi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pw206"]
+shader = ExtResource("3_0ox7m")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Hero" parent="." instance=ExtResource("1_41om0")]
-
-[node name="tree" parent="." instance=ExtResource("2_lwdk1")]
-position = Vector2(-186, -123)
-rotation = -0.523598
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_gjdfi")
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("ConeViewport")]
+material = SubResource("ShaderMaterial_pw206")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+script = ExtResource("2_3m426")
+ConeViewport = NodePath("../../SubViewport")
+FullscreenQuadShader = SubResource("ShaderMaterial_pw206")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
-[node name="VisibilityRenderer" type="Node2D" parent="."]
+[node name="ViewportCam" type="Camera2D" parent="SubViewport"]
+
+[node name="VisibilityRenderer" type="Node2D" parent="SubViewport" node_paths=PackedStringArray("Polygon2D")]
 script = ExtResource("3_qspr6")
+Polygon2D = NodePath("Polygon2D")
+
+[node name="Polygon2D" type="Polygon2D" parent="SubViewport/VisibilityRenderer"]
+
+[node name="Hero" parent="." instance=ExtResource("1_41om0")]
+
+[node name="tree" parent="." instance=ExtResource("2_lwdk1")]
+position = Vector2(-186, -123)
+rotation = -0.523598
 
 [node name="tree2" parent="." instance=ExtResource("2_lwdk1")]
 position = Vector2(82, -167)
