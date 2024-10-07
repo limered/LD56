@@ -6,12 +6,6 @@
 [ext_resource type="Shader" path="res://shader/main.gdshader" id="3_0ox7m"]
 [ext_resource type="Script" path="res://src/Visibility/VisibilityRendererComponent.cs" id="3_qspr6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pw206"]
-shader = ExtResource("3_0ox7m")
-shader_parameter/hero_position = Vector2(0, 0)
-shader_parameter/cone_radius_pixel = 300.0
-shader_parameter/cone_feather = 0.4
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a61o1"]
 albedo_color = Color(0, 0, 0, 1)
 
@@ -22,7 +16,17 @@ subdivide_width = 10
 subdivide_depth = 10
 orientation = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pw206"]
+shader = ExtResource("3_0ox7m")
+shader_parameter/hero_position = Vector2(0, 0)
+shader_parameter/cone_radius_pixel = 30.0
+shader_parameter/cone_feather = 0.3
+
 [node name="Node2D" type="Node2D"]
+
+[node name="Ground" type="MeshInstance2D" parent="."]
+modulate = Color(1, 0.984787, 0.9637, 1)
+mesh = SubResource("PlaneMesh_wivql")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -45,9 +49,12 @@ Hero = NodePath("../../Hero")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
-transparent_bg = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
+
+[node name="Shadows" type="MeshInstance2D" parent="SubViewport"]
+modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
+mesh = SubResource("PlaneMesh_wivql")
 
 [node name="ViewportCam" type="Camera2D" parent="SubViewport"]
 
@@ -56,10 +63,6 @@ script = ExtResource("3_qspr6")
 Polygon2D = NodePath("Polygon2D")
 
 [node name="Polygon2D" type="Polygon2D" parent="SubViewport/VisibilityRenderer"]
-
-[node name="Ground" type="MeshInstance2D" parent="."]
-modulate = Color(0.0784314, 0.0392157, 0, 1)
-mesh = SubResource("PlaneMesh_wivql")
 
 [node name="Hero" parent="." instance=ExtResource("1_41om0")]
 
