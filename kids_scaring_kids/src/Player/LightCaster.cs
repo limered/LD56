@@ -22,7 +22,7 @@ public partial class LightCaster : Node2D
     {
         var spaceState = GetWorld2D().DirectSpaceState;
 
-        var maxRayLength = 400;
+        var maxRayLength = 300;
         var coneAngle = 0.20f;
         var steps = 200f;
         var stepSize = coneAngle / steps;
