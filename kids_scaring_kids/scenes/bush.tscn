@@ -1,15 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://qm8ecqf43b1y"]
+[gd_scene load_steps=4 format=3 uid="uid://8no5y5mmhm65"]
 
-[ext_resource type="Script" path="res://src/Things/StaticOcclusionComponent.cs" id="1_jf2o7"]
-[ext_resource type="Texture2D" uid="uid://g7uslt1odwo5" path="res://img/tree_01.png" id="2_yseka"]
+[ext_resource type="Script" path="res://src/Things/StaticOcclusionComponent.cs" id="1_lo3fh"]
+[ext_resource type="Texture2D" uid="uid://byphbimy6p8ry" path="res://img/bush.png" id="2_177ck"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lqku0"]
-radius = 22.0227
+radius = 11.0454
 
 [node name="tree" type="Node2D"]
 
 [node name="OcclusionComponent" type="Node2D" parent="." node_paths=PackedStringArray("ColliderShape")]
-script = ExtResource("1_jf2o7")
+script = ExtResource("1_lo3fh")
 ColliderShape = NodePath("../Area2D/CollisionShape2D")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -18,4 +18,4 @@ ColliderShape = NodePath("../Area2D/CollisionShape2D")
 shape = SubResource("CircleShape2D_lqku0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_yseka")
+texture = ExtResource("2_177ck")

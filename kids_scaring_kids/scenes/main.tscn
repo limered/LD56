@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b21nfhxb50vst"]
+[gd_scene load_steps=11 format=3 uid="uid://b21nfhxb50vst"]
 
 [ext_resource type="PackedScene" uid="uid://cpam265n8cu5a" path="res://scenes/hero.tscn" id="1_41om0"]
 [ext_resource type="Script" path="res://src/Visibility/FullscreenQuadComponent.cs" id="2_3m426"]
 [ext_resource type="PackedScene" uid="uid://qm8ecqf43b1y" path="res://scenes/tree.tscn" id="2_lwdk1"]
 [ext_resource type="Shader" path="res://shader/main.gdshader" id="3_0ox7m"]
 [ext_resource type="Script" path="res://src/Visibility/VisibilityRendererComponent.cs" id="3_qspr6"]
+[ext_resource type="PackedScene" uid="uid://8no5y5mmhm65" path="res://scenes/bush.tscn" id="6_fd7kf"]
+[ext_resource type="Script" path="res://src/Creatures/CreatureSpawnerComponent.cs" id="7_2i2f7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a61o1"]
 albedo_color = Color(0, 0, 0, 1)
@@ -25,7 +27,7 @@ shader_parameter/cone_feather = 0.7
 [node name="Node2D" type="Node2D"]
 
 [node name="Ground" type="MeshInstance2D" parent="."]
-modulate = Color(1, 0.984787, 0.9637, 1)
+modulate = Color(0.603922, 0.623529, 0.529412, 1)
 mesh = SubResource("PlaneMesh_wivql")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -53,7 +55,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Shadows" type="MeshInstance2D" parent="SubViewport"]
-modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
+modulate = Color(0.0823529, 0.113725, 0.101961, 1)
 mesh = SubResource("PlaneMesh_wivql")
 
 [node name="ViewportCam" type="Camera2D" parent="SubViewport"]
@@ -66,26 +68,170 @@ Polygon2D = NodePath("Polygon2D")
 
 [node name="Hero" parent="." instance=ExtResource("1_41om0")]
 
-[node name="tree" parent="." instance=ExtResource("2_lwdk1")]
-position = Vector2(-186, -123)
-rotation = -0.523598
+[node name="trees" type="Node" parent="."]
 
-[node name="tree2" parent="." instance=ExtResource("2_lwdk1")]
-position = Vector2(82, -167)
-rotation = -1.0472
+[node name="tree" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(-100, -107)
+rotation = 0.16045
 
-[node name="tree3" parent="." instance=ExtResource("2_lwdk1")]
-position = Vector2(240, -40)
-rotation = -1.57079
+[node name="tree7" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(-291, -75)
+rotation = 0.16045
 
-[node name="tree4" parent="." instance=ExtResource("2_lwdk1")]
+[node name="tree8" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(-243, 213)
+rotation = 0.16045
+
+[node name="tree18" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(-444, 272)
+rotation = 0.16045
+scale = Vector2(1.28942, 1.28942)
+
+[node name="tree19" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(-503, -65)
+rotation = 0.16045
+scale = Vector2(1.28942, 1.28942)
+
+[node name="tree20" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(159, -262)
+rotation = 0.16045
+scale = Vector2(1.28942, 1.28942)
+
+[node name="tree21" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(543, -24)
+rotation = 0.16045
+scale = Vector2(1.28942, 1.28942)
+
+[node name="tree22" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(197, 270)
+rotation = 0.16045
+scale = Vector2(1.28942, 1.28942)
+
+[node name="tree17" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(116, 13)
+rotation = 0.16045
+
+[node name="tree9" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(311, 167)
+rotation = 0.16045
+
+[node name="tree10" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(409, 14)
+rotation = 0.16045
+
+[node name="tree11" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(269, -180)
+rotation = 0.16045
+
+[node name="tree12" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(-69, -272)
+rotation = 0.16045
+
+[node name="tree16" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(480, -206)
+rotation = -0.187382
+scale = Vector2(1.45598, 1.45598)
+
+[node name="tree13" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(-257, -243)
+rotation = 1.20125
+
+[node name="tree15" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(-410, 88)
+rotation = -0.39881
+scale = Vector2(1.40073, 1.45444)
+
+[node name="tree14" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(-438, -219)
+rotation = 1.20125
+scale = Vector2(1.56082, 1.47554)
+
+[node name="tree2" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(88, -154)
+rotation = -0.566815
+
+[node name="tree3" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(224, -22)
+rotation = 2.82772
+
+[node name="tree4" parent="trees" instance=ExtResource("2_lwdk1")]
 position = Vector2(117, 146)
-rotation = -2.09439
+rotation = -1.75383
+scale = Vector2(1, 1)
 
-[node name="tree5" parent="." instance=ExtResource("2_lwdk1")]
-position = Vector2(-178, 23)
-rotation = -2.61799
+[node name="tree5" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(-157, 58)
+rotation = 2.453
 
-[node name="tree6" parent="." instance=ExtResource("2_lwdk1")]
-position = Vector2(-78.42, 222.521)
+[node name="tree6" parent="trees" instance=ExtResource("2_lwdk1")]
+position = Vector2(-68, 192)
 rotation = -3.14159
+
+[node name="bushes" type="Node" parent="."]
+
+[node name="bush" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(-167, 161)
+rotation = 0.0639649
+
+[node name="bush2" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(-276, 15)
+rotation = 0.196025
+
+[node name="bush3" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(-195, -184)
+rotation = -0.713534
+
+[node name="bush4" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(-42, -53)
+rotation = -0.300151
+
+[node name="bush5" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(219, 105)
+rotation = 0.927501
+
+[node name="bush6" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(447, -39)
+rotation = -0.6242
+
+[node name="bush7" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(126, -191)
+rotation = -0.6242
+
+[node name="bush8" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(412, -230)
+rotation = -0.6242
+
+[node name="bush9" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(383, -232)
+rotation = -0.6242
+
+[node name="bush10" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(315, 224)
+rotation = -0.6242
+
+[node name="bush11" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(542, 293)
+rotation = -0.6242
+
+[node name="bush13" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(328, 296)
+rotation = -2.89131
+scale = Vector2(1.12468, 1.12468)
+
+[node name="bush14" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(-392, 141)
+rotation = -2.89131
+scale = Vector2(1.12468, 1.12468)
+
+[node name="bush15" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(-443, -146)
+rotation = -2.89131
+scale = Vector2(1.12468, 1.12468)
+
+[node name="bush12" parent="bushes" instance=ExtResource("6_fd7kf")]
+position = Vector2(437, 286)
+rotation = 0.185057
+scale = Vector2(1.51931, 1.51931)
+
+[node name="Creatures" type="Node" parent="."]
+script = ExtResource("7_2i2f7")
