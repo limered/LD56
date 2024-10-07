@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eacaa8fd-e867-4bc8-a40a-d05afa4284b6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.New Game Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.New Game Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/hero.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/hero.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/creature.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/creature.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/hero.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/hero.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/main.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/tree.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/tree.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animation/LinearAnimationComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animation/LinearAnimationComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/Hero.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player/LightCaster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/LightCaster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Things/ThingsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Things/ThingsRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Visibility/VisibilityRendererComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Visibility/VisibilityRendererComponent.cs" afterDir="false" />
-    </list>
+    <list default="true" id="eacaa8fd-e867-4bc8-a40a-d05afa4284b6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +92,7 @@
       <workItem from="1728244266299" duration="65000" />
       <workItem from="1728244464049" duration="11875000" />
       <workItem from="1728290297937" duration="7546000" />
-      <workItem from="1728323602126" duration="12370000" />
+      <workItem from="1728323602126" duration="12971000" />
     </task>
     <servers />
   </component>
