@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eacaa8fd-e867-4bc8-a40a-d05afa4284b6" name="Changes" comment="" />
+    <list default="true" id="eacaa8fd-e867-4bc8-a40a-d05afa4284b6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.New Game Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.New Game Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/export_presets.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/export_presets.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/main.tscn" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +19,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e43c43ee5cdcf2c7c8ddb9366f75a76a3c61c77bf45ceac78721c269f3c360/CanvasItem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -92,7 +99,7 @@
       <workItem from="1728244266299" duration="65000" />
       <workItem from="1728244464049" duration="11875000" />
       <workItem from="1728290297937" duration="7546000" />
-      <workItem from="1728323602126" duration="12971000" />
+      <workItem from="1728323602126" duration="14395000" />
     </task>
     <servers />
   </component>
