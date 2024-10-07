@@ -7,6 +7,7 @@ public partial class PlayerControlledBrain : Node2D
 {
     [Export] public Node2D Root;
     [Export] public LinearAnimationComponent Animation;
+    [Export] public AudioStreamPlayer2D Audio;
 
     private Vector2 _halfScreenSize;
 
@@ -27,6 +28,12 @@ public partial class PlayerControlledBrain : Node2D
         if (Input.IsActionPressed("Down"))
             direction += Root.Position.Y >= _halfScreenSize.Y ? Vector2.Up : Vector2.Down;
         Animation.MovementDirection = direction;
+        
+        if(direction.Length() > 0.1f)
+        {
+            if (!Audio.IsPlaying()) Audio.Play();
+        }
+        else Audio.Stop();
 
         var mousePosition = GetGlobalMousePosition();
         var lookDirection = (mousePosition - Root.GlobalPosition).Normalized();
