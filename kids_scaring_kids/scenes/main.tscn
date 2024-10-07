@@ -20,7 +20,7 @@ orientation = 2
 shader = ExtResource("3_0ox7m")
 shader_parameter/hero_position = Vector2(0, 0)
 shader_parameter/cone_radius_pixel = 30.0
-shader_parameter/cone_feather = 0.3
+shader_parameter/cone_feather = 0.7
 
 [node name="Node2D" type="Node2D"]
 
