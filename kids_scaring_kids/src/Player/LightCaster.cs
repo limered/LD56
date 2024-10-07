@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Godot;
 using NewGameProject.Animation;
+using NewGameProject.Creatures;
 using NewGameProject.Things;
 using NewGameProject.Utils;
 using NewGameProject.Visibility;
@@ -16,6 +17,7 @@ public partial class LightCaster : Node2D
     public override void _Ready()
     {
         _repo = GetNode<ThingsRepository>("/root/ThingsRepository");
+        _repo.Hero = Root;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -23,7 +25,7 @@ public partial class LightCaster : Node2D
         var spaceState = GetWorld2D().DirectSpaceState;
 
         var maxRayLength = 300;
-        var coneAngle = 0.20f;
+        var coneAngle = 0.30f;
         var steps = 200f;
         var stepSize = coneAngle / steps;
         var cone = new List<Vector2> { Root.GlobalPosition };
@@ -39,7 +41,19 @@ public partial class LightCaster : Node2D
             
             if(result.Count > 0)
             {
-                cone.Add(result["position"].AsVector2());
+                var area = (Area2D)result["collider"].AsGodotObject();
+                if (area.IsInGroup("creatures"))
+                {
+                    var brain = area.GetParent()?.GetNode<CreatureBrainComponent>("CreatureBraincomponent");
+                    if(brain != null)
+                    {
+                        brain.HitRegistered = true;
+                    }
+                }
+                else
+                {
+                    cone.Add(result["position"].AsVector2());
+                }
             }
             else
             {
