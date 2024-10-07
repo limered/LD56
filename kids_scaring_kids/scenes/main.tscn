@@ -13,7 +13,7 @@ shader_parameter/cone_radius_pixel = 300.0
 shader_parameter/cone_feather = 0.4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a61o1"]
-albedo_color = Color(0, 0, 0.858824, 1)
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wivql"]
 material = SubResource("StandardMaterial3D_a61o1")
@@ -29,6 +29,8 @@ orientation = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("ConeViewport", "Hero")]
+auto_translate_mode = 1
+visible = false
 material = SubResource("ShaderMaterial_pw206")
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,7 +58,7 @@ Polygon2D = NodePath("Polygon2D")
 [node name="Polygon2D" type="Polygon2D" parent="SubViewport/VisibilityRenderer"]
 
 [node name="Ground" type="MeshInstance2D" parent="."]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0.0784314, 0.0392157, 0, 1)
 mesh = SubResource("PlaneMesh_wivql")
 
 [node name="Hero" parent="." instance=ExtResource("1_41om0")]

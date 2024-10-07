@@ -7,8 +7,6 @@
     <list default="true" id="eacaa8fd-e867-4bc8-a40a-d05afa4284b6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.New Game Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.New Game Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scenes/main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/main.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shader/main.gdshader" beforeDir="false" afterPath="$PROJECT_DIR$/shader/main.gdshader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player/LightCaster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/LightCaster.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player/PlayerControlledBrain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/PlayerControlledBrain.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Visibility/FullscreenQuadComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Visibility/FullscreenQuadComponent.cs" afterDir="false" />
     </list>
@@ -94,7 +92,7 @@
       <updated>1728244263724</updated>
       <workItem from="1728244266299" duration="65000" />
       <workItem from="1728244464049" duration="11875000" />
-      <workItem from="1728290297937" duration="4608000" />
+      <workItem from="1728290297937" duration="5843000" />
     </task>
     <servers />
   </component>

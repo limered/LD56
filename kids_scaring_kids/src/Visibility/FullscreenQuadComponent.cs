@@ -12,7 +12,7 @@ public partial class FullscreenQuadComponent : ColorRect
     {
         var tex = ConeViewport.GetTexture();
         FullscreenQuadShader.SetShaderParameter("light_cone_texture", tex);
-        
+        Visible = true;
     }
 
     public override void _Process(double delta)
