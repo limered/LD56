@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eacaa8fd-e867-4bc8-a40a-d05afa4284b6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/scenes/main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/main.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shader/main.gdshader" beforeDir="false" afterPath="$PROJECT_DIR$/shader/main.gdshader" afterDir="false" />
-    </list>
+    <list default="true" id="eacaa8fd-e867-4bc8-a40a-d05afa4284b6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,7 +87,7 @@
       <updated>1728244263724</updated>
       <workItem from="1728244266299" duration="65000" />
       <workItem from="1728244464049" duration="11875000" />
-      <workItem from="1728290297937" duration="6348000" />
+      <workItem from="1728290297937" duration="7546000" />
     </task>
     <servers />
   </component>
