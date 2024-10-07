@@ -81,7 +81,7 @@ position = Vector2(-291, -75)
 rotation = 0.16045
 
 [node name="tree8" parent="trees" instance=ExtResource("2_lwdk1")]
-position = Vector2(-243, 213)
+position = Vector2(-241, 217)
 rotation = 0.16045
 
 [node name="tree18" parent="trees" instance=ExtResource("2_lwdk1")]
@@ -105,7 +105,7 @@ rotation = 0.16045
 scale = Vector2(1.28942, 1.28942)
 
 [node name="tree22" parent="trees" instance=ExtResource("2_lwdk1")]
-position = Vector2(197, 270)
+position = Vector2(196, 270)
 rotation = 0.16045
 scale = Vector2(1.28942, 1.28942)
 
