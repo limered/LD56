@@ -4,11 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eacaa8fd-e867-4bc8-a40a-d05afa4284b6" name="Changes" comment="" />
+    <list default="true" id="eacaa8fd-e867-4bc8-a40a-d05afa4284b6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.New Game Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.New Game Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/hero.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/hero.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/creature.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/creature.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/hero.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/hero.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/main.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/tree.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/tree.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animation/LinearAnimationComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animation/LinearAnimationComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player/Hero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/Hero.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player/LightCaster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/LightCaster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Things/ThingsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Things/ThingsRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Visibility/VisibilityRendererComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Visibility/VisibilityRendererComponent.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="autoShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -27,6 +42,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    ".NET Executable.Player.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -35,7 +51,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -51,9 +67,9 @@
       <method v="2" />
     </configuration>
     <configuration name="Editor" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../../../ProgramData/chocolatey/lib/godot-mono/tools/godot_v4.3-stable_mono_win64/godot_v4.3-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="/app/bin/godot-bin" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot; --editor" />
-      <option name="WORKING_DIRECTORY" value="C:\sources\_game.dev\LD56\kids_scaring_kids" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -64,9 +80,9 @@
       </method>
     </configuration>
     <configuration name="Player" type="RunExe" factoryName=".NET Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../../../ProgramData/chocolatey/lib/godot-mono/tools/godot_v4.3-stable_mono_win64/godot_v4.3-stable_mono_win64.exe" />
+      <option name="EXE_PATH" value="/app/bin/godot-bin" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot;" />
-      <option name="WORKING_DIRECTORY" value="C:\sources\_game.dev\LD56\kids_scaring_kids" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -88,6 +104,7 @@
       <workItem from="1728244266299" duration="65000" />
       <workItem from="1728244464049" duration="11875000" />
       <workItem from="1728290297937" duration="7546000" />
+      <workItem from="1728323602126" duration="12370000" />
     </task>
     <servers />
   </component>
