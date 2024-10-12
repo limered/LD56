@@ -8,10 +8,9 @@ namespace NewGameProject.Visibility;
 
 public partial class VisibilityRendererComponent : Node2D
 {
-    [Export] public Polygon2D Polygon2D;
-    public List<Vector2> Points = new();
-
     private ThingsRepository _things;
+    public List<Vector2> Points = new();
+    [Export] public Polygon2D Polygon2D;
 
     public override void _Ready()
     {
@@ -31,7 +30,7 @@ public partial class VisibilityRendererComponent : Node2D
         for (var i = 0; i < creatureClone.Length; i++)
         {
             var creature = creatureClone[i];
-            if(creature.GetNode<CreatureBrainComponent>("CreatureBraincomponent").EyesClosed) continue;
+            if (creature.GetNode<CreatureBrainComponent>("CreatureBraincomponent").EyesClosed) continue;
             var left = creature.GlobalPosition - new Vector2(3, 0);
             var right = creature.GlobalPosition + new Vector2(3, 0);
             DrawCircle(left, 2f, new Color(1f, 1f, 1f));
@@ -41,10 +40,7 @@ public partial class VisibilityRendererComponent : Node2D
 
     public override void _Process(double delta)
     {
-        if(Polygon2D != null)
-        {
-            Polygon2D.Polygon = Points.ToArray();
-        }
+        if (Polygon2D != null) Polygon2D.Polygon = Points.ToArray();
         QueueRedraw();
     }
 }
