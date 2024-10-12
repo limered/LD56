@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b21nfhxb50vst"]
+[gd_scene load_steps=15 format=3 uid="uid://b21nfhxb50vst"]
 
 [ext_resource type="PackedScene" uid="uid://cpam265n8cu5a" path="res://scenes/hero.tscn" id="1_41om0"]
+[ext_resource type="Script" path="res://src/World/GameWorldComponent.cs" id="1_jgym8"]
 [ext_resource type="Script" path="res://src/Visibility/FullscreenQuadComponent.cs" id="2_3m426"]
+[ext_resource type="Script" path="res://src/World/UiComponent.cs" id="2_eeako"]
 [ext_resource type="PackedScene" uid="uid://qm8ecqf43b1y" path="res://scenes/tree.tscn" id="2_lwdk1"]
 [ext_resource type="Shader" path="res://shader/main.gdshader" id="3_0ox7m"]
 [ext_resource type="Script" path="res://src/Visibility/VisibilityRendererComponent.cs" id="3_qspr6"]
@@ -27,6 +29,7 @@ shader_parameter/cone_radius_pixel = 30.0
 shader_parameter/cone_feather = 0.7
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_jgym8")
 
 [node name="Ground" type="MeshInstance2D" parent="."]
 modulate = Color(0.603922, 0.623529, 0.529412, 1)
@@ -34,11 +37,13 @@ mesh = SubResource("PlaneMesh_wivql")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("ConeDisplay", "StartButton")]
+script = ExtResource("2_eeako")
+ConeDisplay = NodePath("ColorRect")
+StartButton = NodePath("ColorRect/Button")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("ConeViewport", "Hero")]
 auto_translate_mode = 1
-visible = false
 material = SubResource("ShaderMaterial_pw206")
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,6 +55,21 @@ script = ExtResource("2_3m426")
 ConeViewport = NodePath("../../SubViewport")
 FullscreenQuadShader = SubResource("ShaderMaterial_pw206")
 Hero = NodePath("../../Hero")
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -15.5
+offset_right = 75.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Turn on Torchlight"
 
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
@@ -110,7 +130,7 @@ rotation = 0.16045
 scale = Vector2(1.28942, 1.28942)
 
 [node name="tree17" parent="trees" instance=ExtResource("2_lwdk1")]
-position = Vector2(116, 13)
+position = Vector2(110, 5)
 rotation = 0.16045
 
 [node name="tree9" parent="trees" instance=ExtResource("2_lwdk1")]
@@ -159,7 +179,6 @@ rotation = 2.82772
 [node name="tree4" parent="trees" instance=ExtResource("2_lwdk1")]
 position = Vector2(117, 146)
 rotation = -1.75383
-scale = Vector2(1, 1)
 
 [node name="tree5" parent="trees" instance=ExtResource("2_lwdk1")]
 position = Vector2(-157, 58)
