@@ -18,6 +18,6 @@ public partial class UiComponent : CanvasLayer
     private void StartButtonOnButtonDown()
     {
         StartButton.SetVisible(false);
-        EventBus.Emit(new GameStateChangeRequestMsg{TargetState = GameState.Intro});
+        EventBus.Emit(new GameStateChangeRequestMsg { TargetState = GameState.Intro });
     }
 }

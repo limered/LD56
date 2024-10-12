@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
 using NewGameProject.Things;
 using NewGameProject.Utils;
@@ -10,10 +9,10 @@ namespace NewGameProject.Creatures;
 public partial class CreatureSpawnerComponent : Node
 {
     private PackedScene _creatureScene;
+
+    private int _lastVal = -1;
     private List<StaticOcclusionComponent> _trees;
     [Export] public Node2D Hero;
-    
-    private int _lastVal = -1;
 
     public override void _Ready()
     {
@@ -39,6 +38,7 @@ public partial class CreatureSpawnerComponent : Node
                     maxDistance = distance;
                 }
             }
+
             var creature = _creatureScene.Instantiate<Node2D>();
             creature.GlobalPosition = furthest.GlobalPosition;
             creature.GetNode<CreatureBrainComponent>("CreatureBraincomponent").IsFirstCreep = true;
@@ -51,17 +51,18 @@ public partial class CreatureSpawnerComponent : Node
             tween.TweenMethod(Callable.From<int>(Spawn), 0, _trees.Count - 1, 3.0);
         }
     }
-    
-    
+
+
     private void Spawn(int val)
     {
-        if(_lastVal == val) return;
-        for(var j = 0; j < 4; j++)
+        if (_lastVal == val) return;
+        for (var j = 0; j < 4; j++)
         {
             var creature = _creatureScene.Instantiate<Node2D>();
             creature.GlobalPosition = _trees[val].GlobalPosition;
             AddChild(creature);
         }
+
         _lastVal = val;
     }
 }
