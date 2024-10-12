@@ -8,7 +8,7 @@ public partial class FullscreenQuadComponent : ColorRect
 {
     [Export] public SubViewport ConeViewport;
     [Export] public ShaderMaterial FullscreenQuadShader;
-    [Export] public Node2D Hero; 
+    [Export] public Node2D Hero;
 
     public override void _Ready()
     {
@@ -26,7 +26,6 @@ public partial class FullscreenQuadComponent : ColorRect
             var tween = GetTree().CreateTween();
             tween.TweenMethod(Callable.From<int>(AnimateCone), 0, 30, 0.1f)
                 .SetEase(Tween.EaseType.InOut);
-
         }
         else if (obj.State is GameState.EndGame or GameState.StartScreen)
         {
