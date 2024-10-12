@@ -254,8 +254,9 @@ position = Vector2(437, 286)
 rotation = 0.185057
 scale = Vector2(1.51931, 1.51931)
 
-[node name="Creatures" type="Node" parent="."]
+[node name="Creatures" type="Node" parent="." node_paths=PackedStringArray("Hero")]
 script = ExtResource("7_2i2f7")
+Hero = NodePath("../Hero")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_ger0m")
