@@ -24,7 +24,7 @@ public partial class FullscreenQuadComponent : ColorRect
         {
             GD.Print("Intro");
             var tween = GetTree().CreateTween();
-            tween.TweenMethod(Callable.From<int>(AnimateCone), 0, 30, 0.5f)
+            tween.TweenMethod(Callable.From<int>(AnimateCone), 0, 30, 0.1f)
                 .SetEase(Tween.EaseType.InOut);
 
         }
