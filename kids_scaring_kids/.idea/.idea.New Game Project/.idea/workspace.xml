@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="eacaa8fd-e867-4bc8-a40a-d05afa4284b6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.New Game Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.New Game Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/export_presets.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/export_presets.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scenes/main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/main.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Visibility/FullscreenQuadComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Visibility/FullscreenQuadComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/World/GameWorldComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/World/GameWorldComponent.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +40,7 @@
   "keyToString": {
     ".NET Executable.Player.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "develop",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -100,6 +101,7 @@
       <workItem from="1728244464049" duration="11875000" />
       <workItem from="1728290297937" duration="7546000" />
       <workItem from="1728323602126" duration="14395000" />
+      <workItem from="1728758047580" duration="5411000" />
     </task>
     <servers />
   </component>
