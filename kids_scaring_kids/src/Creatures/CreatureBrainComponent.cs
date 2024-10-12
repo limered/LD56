@@ -1,6 +1,8 @@
 using Godot;
 using NewGameProject.Animation;
 using NewGameProject.Things;
+using NewGameProject.Utils;
+using NewGameProject.World;
 
 namespace NewGameProject.Creatures;
 
@@ -9,6 +11,7 @@ public partial class CreatureBrainComponent : Node2D
     [Export] public Node2D Root;
     [Export] public LinearAnimationComponent Animation;
     public float TimeInLight = 0.5f;
+    public bool IsFirstCreep = false;
 
     public bool EyesClosed = false;
     private Node2D _hero;
@@ -73,6 +76,12 @@ public partial class CreatureBrainComponent : Node2D
         }
         else
         {
+            if (IsFirstCreep)
+            {
+                IsFirstCreep = false;
+                EventBus.Emit(new GameStateChangeRequestMsg(){TargetState = GameState.Running});
+            }
+            
             if (_state == CreatureState.Hiding && _target.HasValue)
             {
                 if (Root.GlobalPosition.DistanceSquaredTo(_target.Value) <= 2f)

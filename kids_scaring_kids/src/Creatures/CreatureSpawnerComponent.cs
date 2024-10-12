@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using NewGameProject.Things;
 using NewGameProject.Utils;
@@ -11,21 +12,13 @@ public partial class CreatureSpawnerComponent : Node
     private PackedScene _creatureScene;
     private List<StaticOcclusionComponent> _trees;
     [Export] public Node2D Hero;
+    
+    private int _lastVal = -1;
 
     public override void _Ready()
     {
         _creatureScene = GD.Load<PackedScene>("res://scenes/creature.tscn");
         _trees = GetNode<ThingsRepository>("/root/ThingsRepository").Nodes;
-        // for (var i = 0; i < trees.Count; i++)
-        // {
-        //     for(var j = 0; j < 3; j++)
-        //     {
-        //         var creature = creatureScene.Instantiate<Node2D>();
-        //         creature.GlobalPosition = trees[i].GlobalPosition;
-        //         AddChild(creature);
-        //     }
-        // }
-        
         EventBus.Register<GameStateChangedMsg>(OnGameStateChanged);
     }
 
@@ -48,7 +41,27 @@ public partial class CreatureSpawnerComponent : Node
             }
             var creature = _creatureScene.Instantiate<Node2D>();
             creature.GlobalPosition = furthest.GlobalPosition;
+            creature.GetNode<CreatureBrainComponent>("CreatureBraincomponent").IsFirstCreep = true;
             AddChild(creature);
         }
+        else if (obj.State is GameState.Running)
+        {
+            GD.Print("Running");
+            var tween = GetTree().CreateTween();
+            tween.TweenMethod(Callable.From<int>(Spawn), 0, _trees.Count - 1, 3.0);
+        }
+    }
+    
+    
+    private void Spawn(int val)
+    {
+        if(_lastVal == val) return;
+        for(var j = 0; j < 4; j++)
+        {
+            var creature = _creatureScene.Instantiate<Node2D>();
+            creature.GlobalPosition = _trees[val].GlobalPosition;
+            AddChild(creature);
+        }
+        _lastVal = val;
     }
 }

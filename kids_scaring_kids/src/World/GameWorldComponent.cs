@@ -47,28 +47,22 @@ public partial class GameWorldComponent : Node2D
 
     private void GoToState(GameState newState)
     {
+        _gameState = newState;
         switch (newState)
         {
             case GameState.StartScreen:
                 EventBus.Emit(new GameStateChangedMsg{State = newState});
-                // show start screen
                 break;
             case GameState.Intro:
                 EventBus.Emit(new GameStateChangedMsg{State = newState});
                 GetTree().CreateTimer(5.0).Timeout += () =>
-                    EventBus.Emit(new GameStateChangedMsg{State = GameState.OneEnemy});
-                
-                // turn on light
-                // activate movement
-                // activate timer to spawn first enemy
+                    EventBus.Emit(new GameStateChangeRequestMsg(){TargetState = GameState.OneEnemy});
                 break;
             case GameState.OneEnemy:
-                // spawn first enemy
+                EventBus.Emit(new GameStateChangedMsg{State = newState});
                 break;
             case GameState.Running:
                 EventBus.Emit(new GameStateChangedMsg{State = newState});
-                // spawn other enemies for some frames
-                // maybe: per killed enemy, add some leafs to trees
                 break;
             case GameState.EndGame:
                 EventBus.Emit(new GameStateChangedMsg{State = newState});
