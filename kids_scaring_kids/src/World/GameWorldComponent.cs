@@ -21,7 +21,7 @@ public partial class GameWorldComponent : Node2D
     
     private readonly Dictionary<GameState, List<GameState>> _allowedStates = new ()
     {
-        { GameState.StartScreen, new List<GameState> { GameState.StartScreen }},
+        { GameState.StartScreen, new List<GameState> { GameState.Intro }},
         { GameState.Intro, new List<GameState> { GameState.OneEnemy }},
         { GameState.OneEnemy, new List<GameState> { GameState.Running }},
         { GameState.Running, new List<GameState> { GameState.EndGame }},
@@ -32,8 +32,8 @@ public partial class GameWorldComponent : Node2D
 
     public override void _Ready()
     {
-        EventBus.Emit(new GameStateChangedMsg(){State = GameState.StartScreen});
         EventBus.Register<GameStateChangeRequestMsg>(ChangeGameState);
+        EventBus.Emit(new GameStateChangedMsg{State = GameState.StartScreen});
     }
 
     private void ChangeGameState(GameStateChangeRequestMsg requestMsg)
