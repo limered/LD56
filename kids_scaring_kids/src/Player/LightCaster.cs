@@ -5,6 +5,7 @@ using NewGameProject.Creatures;
 using NewGameProject.Things;
 using NewGameProject.Utils;
 using NewGameProject.Visibility;
+using NewGameProject.World;
 
 namespace NewGameProject.Player;
 
@@ -13,21 +14,43 @@ public partial class LightCaster : Node2D
     private ThingsRepository _repo;
     [Export] public LinearAnimationComponent Animation;
     [Export] public Node2D Root;
+    [Export] public int MaxRayLength;
 
     public override void _Ready()
     {
         _repo = GetNode<ThingsRepository>("/root/ThingsRepository");
         _repo.Hero = Root;
+        MaxRayLength = 0;
+        EventBus.Register<GameStateChangedMsg>(OnGameChanged);
+    }
+
+    private void OnGameChanged(GameStateChangedMsg obj)
+    {
+        if (obj.State == GameState.Intro)
+        {
+            var tween = GetTree().CreateTween();
+            tween.TweenMethod(Callable.From<int>(AnimateCone), 0, 300, 0.5f)
+                .SetEase(Tween.EaseType.InOut);
+
+        }
+        else if (obj.State is GameState.EndGame or GameState.StartScreen)
+        {
+            MaxRayLength = 0;
+        }
+    }
+    
+    private void AnimateCone(int val)
+    {
+        MaxRayLength = val;
     }
 
     public override void _PhysicsProcess(double delta)
     {
         var spaceState = GetWorld2D().DirectSpaceState;
 
-        var maxRayLength = 300;
-        var coneAngle = 0.30f;
-        var steps = 200f;
-        var stepSize = coneAngle / steps;
+        const float coneAngle = 0.30f;
+        const float steps = 200f;
+        const float stepSize = coneAngle / steps;
         var cone = new List<Vector2> { Root.GlobalPosition };
         for (var i = 0; i < steps; i++)
         {
@@ -35,7 +58,7 @@ public partial class LightCaster : Node2D
             var angle = Animation.RotationAngle + Mathf.Pi * angleDiff - Mathf.Pi;
             var ray = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
             
-            var query = PhysicsRayQueryParameters2D.Create(Root.Position, ray * maxRayLength + Root.Position);
+            var query = PhysicsRayQueryParameters2D.Create(Root.Position, ray * MaxRayLength + Root.Position);
             query.CollideWithAreas = true;
             var result = spaceState.IntersectRay(query);
             
@@ -57,7 +80,7 @@ public partial class LightCaster : Node2D
             }
             else
             {
-                cone.Add(ray * maxRayLength + Root.Position);
+                cone.Add(ray * MaxRayLength + Root.Position);
             }
         }
 
