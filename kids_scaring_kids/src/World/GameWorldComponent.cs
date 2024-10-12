@@ -41,7 +41,7 @@ public partial class GameWorldComponent : Node2D
         var allowedSates = _allowedStates[_gameState];
         if (allowedSates.Contains(requestMsg.TargetState))
         {
-            EventBus.Emit(new GameStateChangedMsg{State = requestMsg.TargetState});
+            GoToState(requestMsg.TargetState);
         }
     }
 
@@ -55,12 +55,14 @@ public partial class GameWorldComponent : Node2D
                 break;
             case GameState.Intro:
                 EventBus.Emit(new GameStateChangedMsg{State = newState});
+                GetTree().CreateTimer(5.0).Timeout += () =>
+                    EventBus.Emit(new GameStateChangedMsg{State = GameState.OneEnemy});
+                
                 // turn on light
                 // activate movement
                 // activate timer to spawn first enemy
                 break;
             case GameState.OneEnemy:
-                EventBus.Emit(new GameStateChangedMsg{State = newState});
                 // spawn first enemy
                 break;
             case GameState.Running:

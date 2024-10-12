@@ -29,7 +29,7 @@ public partial class LightCaster : Node2D
         if (obj.State == GameState.Intro)
         {
             var tween = GetTree().CreateTween();
-            tween.TweenMethod(Callable.From<int>(AnimateCone), 0, 300, 0.5f)
+            tween.TweenMethod(Callable.From<int>(AnimateCone), 0, 300, 1.0f)
                 .SetEase(Tween.EaseType.InOut);
 
         }
