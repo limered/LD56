@@ -56,7 +56,7 @@ public partial class CreatureSpawnerComponent : Node
     private void Spawn(int val)
     {
         if (_lastVal == val) return;
-        for (var j = 0; j < 4; j++)
+        for (var j = 0; j < 1; j++)
         {
             var creature = _creatureScene.Instantiate<Node2D>();
             creature.GlobalPosition = _trees[val].GlobalPosition;
