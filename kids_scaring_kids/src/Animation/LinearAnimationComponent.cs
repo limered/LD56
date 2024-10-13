@@ -16,7 +16,7 @@ public partial class LinearAnimationComponent : Node
     {
         Root.GlobalPosition += MovementDirection * Speed * (float)delta;
 
-        if (!Rotate) return;
+        if (!Rotate || Sprite == null) return;
         Sprite.Rotation = RotationAngle;
         Sprite.RotationDegrees -= 90;
     }
