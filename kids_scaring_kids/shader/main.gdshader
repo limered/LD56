@@ -5,6 +5,7 @@ uniform sampler2D light_cone_texture : repeat_disable, filter_nearest_mipmap;
 uniform vec2 hero_position;
 uniform float cone_radius_pixel;
 uniform float cone_feather;
+uniform float alpha_mix_factor;
 
 void vertex() {
 }
@@ -20,6 +21,9 @@ void fragment() {
 	vec4 game_color = textureLod(screen_texture, SCREEN_UV, 0.0);
 	vec4 cone_color = textureLod(light_cone_texture, SCREEN_UV, 0.0);
 	vec2 screen_pixel = (SCREEN_UV - 0.5) * screen_size;
-	float alpha = circle_mask(screen_pixel, hero_position, cone_radius_pixel, cone_feather); 
-    COLOR = vec4(cone_color.xyz, alpha) * game_color;// game_color + cone_color * alpha; ////
+	float alpha = circle_mask(screen_pixel, hero_position, cone_radius_pixel, cone_feather);
+	 
+	vec4 game_colors = (vec4(cone_color.xyz, alpha) * game_color);
+	vec4 end_screen = vec4(vec3(1.0-alpha), 1.0);
+	COLOR = mix(game_colors, end_screen, alpha_mix_factor);
 }
