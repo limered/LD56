@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Godot;
+using NewGameProject.Things;
 using NewGameProject.Utils;
 
 namespace NewGameProject.World;
@@ -28,11 +29,13 @@ public partial class GameWorldComponent : Node2D
     private GameState _gameState = GameState.StartScreen;
 
     private Node2D _visibilityRenderer;
+    private ThingsRepository _things;
 
     public override void _Ready()
     {
         EventBus.Register<GameStateChangeRequestMsg>(ChangeGameState);
         EventBus.Emit(new GameStateChangedMsg { State = GameState.StartScreen });
+        _things = GetNode<ThingsRepository>("/root/ThingsRepository");
     }
 
     private void ChangeGameState(GameStateChangeRequestMsg requestMsg)
@@ -67,5 +70,12 @@ public partial class GameWorldComponent : Node2D
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
+    }
+
+    public override void _Process(double delta)
+    {
+        if (_gameState != GameState.Running) return;
+        if (_things.Creatures.Count > 0) return;
+        EventBus.Emit(new GameStateChangeRequestMsg() { TargetState = GameState.EndGame });
     }
 }
