@@ -8,26 +8,24 @@ namespace NewGameProject.Creatures;
 
 public partial class CreatureBrainComponent : Node2D
 {
-    private Vector2 _halfScreenSize;
-    private Node2D _hero;
-
-    private StaticOcclusionComponent _lastTree;
-
-    private CreatureState _state = CreatureState.Roaming;
-    private Vector2? _target;
-    private ThingsRepository _things;
-
-    private double _timeToStayHidden;
     [Export] public LinearAnimationComponent Animation;
     [Export] public AudioStreamPlayer2D Plop;
-
-    public bool EyesClosed;
-    public bool IsFirstCreep;
     [Export] public Node2D Root;
-    public float TimeInLight = 0.5f;
+    public bool EyesClosed { get; private set; }
+    public bool IsFirstCreep { get; set; }
     public bool HitRegistered { get; set; }
-    public bool IsDying { get; set; }
-    public bool HasDied { get; set; }
+    
+    private Vector2 _halfScreenSize;
+    private Node2D _hero;
+    private StaticOcclusionComponent _lastTree;
+    private Vector2? _target;
+    private ThingsRepository _things;
+    
+    private CreatureState _state = CreatureState.Roaming;
+    private double _timeToStayHidden;
+    private float _timeInLight = 0.5f;
+    private bool _isDying;
+    private bool _hasDied;
 
     public override void _Ready()
     {
@@ -40,32 +38,28 @@ public partial class CreatureBrainComponent : Node2D
     {
         if (!HitRegistered) return;
         HitRegistered = false;
-        TimeInLight -= deltaTime;
-        if (TimeInLight <= 0)
-        {
-            IsDying = true;
-        }
+        _timeInLight -= deltaTime;
+        if (_timeInLight <= 0) _isDying = true;
     }
 
     public override void _Process(double delta)
     {
-        if(HasDied) return;
-        if (IsDying)
+        if (_hasDied) return;
+        if (_isDying)
         {
-            
             _things.Creatures.Remove(Root);
-            
+
             var sprite = Root.GetNode<AnimatedSprite2D>("AnimatedSprite2D");
             sprite.AnimationFinished += SpriteOnAnimationFinished;
             sprite.Play("default");
-            
+
             Plop.PitchScale = (float)(1.0f + GD.RandRange(-0.2f, 0.2f));
             Plop.Play();
-            
-            HasDied = true;
+
+            _hasDied = true;
             return;
         }
-        
+
         CheckForDeath((float)delta);
 
         _hero = _things.Hero;
