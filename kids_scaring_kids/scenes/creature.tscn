@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://5g0maj1wjiqy"]
+[gd_scene load_steps=15 format=3 uid="uid://5g0maj1wjiqy"]
 
 [ext_resource type="Texture2D" uid="uid://bpns7x2ylpi78" path="res://img/creature.png" id="1_abruc"]
 [ext_resource type="Script" path="res://src/Animation/LinearAnimationComponent.cs" id="1_wbaj0"]
 [ext_resource type="Script" path="res://src/Creatures/CreatureBrainComponent.cs" id="2_x4y51"]
+[ext_resource type="AudioStream" uid="uid://bh7cn0sbp2nuo" path="res://sound/plop.wav" id="4_bb7nj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03piv"]
 atlas = ExtResource("1_abruc")
@@ -84,12 +85,16 @@ Root = NodePath("..")
 Sprite = NodePath("")
 Speed = 130.0
 
-[node name="CreatureBraincomponent" type="Node2D" parent="." node_paths=PackedStringArray("Animation", "Root")]
+[node name="CreatureBraincomponent" type="Node2D" parent="." node_paths=PackedStringArray("Animation", "Plop", "Root")]
 script = ExtResource("2_x4y51")
 Animation = NodePath("../MovementComponent")
+Plop = NodePath("../AudioStreamPlayer2D")
 Root = NodePath("..")
 
 [node name="Area2D" type="Area2D" parent="." groups=["creatures"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_yt1r7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_bb7nj")
