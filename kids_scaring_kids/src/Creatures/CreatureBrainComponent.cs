@@ -19,12 +19,15 @@ public partial class CreatureBrainComponent : Node2D
 
     private double _timeToStayHidden;
     [Export] public LinearAnimationComponent Animation;
+    [Export] public AudioStreamPlayer2D Plop;
 
     public bool EyesClosed;
     public bool IsFirstCreep;
     [Export] public Node2D Root;
     public float TimeInLight = 0.5f;
     public bool HitRegistered { get; set; }
+    public bool IsDying { get; set; }
+    public bool HasDied { get; set; }
 
     public override void _Ready()
     {
@@ -33,20 +36,37 @@ public partial class CreatureBrainComponent : Node2D
         _things.Creatures.Add(Root);
     }
 
+    private void CheckForDeath(float deltaTime)
+    {
+        if (!HitRegistered) return;
+        HitRegistered = false;
+        TimeInLight -= deltaTime;
+        if (TimeInLight <= 0)
+        {
+            IsDying = true;
+        }
+    }
+
     public override void _Process(double delta)
     {
-        if (HitRegistered)
+        if(HasDied) return;
+        if (IsDying)
         {
-            TimeInLight -= (float)delta;
-            HitRegistered = false;
-            if (TimeInLight <= 0)
-            {
-                _things.Creatures.Remove(Root);
-                var sprite = Root.GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-                sprite.Play("default");
-                GetTree().CreateTimer(0.5).Timeout += SpriteOnAnimationFinished;
-            }
+            
+            _things.Creatures.Remove(Root);
+            
+            var sprite = Root.GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+            sprite.AnimationFinished += SpriteOnAnimationFinished;
+            sprite.Play("default");
+            
+            Plop.PitchScale = (float)(1.0f + GD.RandRange(-0.2f, 0.2f));
+            Plop.Play();
+            
+            HasDied = true;
+            return;
         }
+        
+        CheckForDeath((float)delta);
 
         _hero = _things.Hero;
         if (_hero == null) return;
