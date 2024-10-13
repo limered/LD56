@@ -7,6 +7,7 @@
 radius = 11.0454
 
 [node name="tree" type="Node2D"]
+texture_filter = 1
 
 [node name="OcclusionComponent" type="Node2D" parent="." node_paths=PackedStringArray("ColliderShape")]
 script = ExtResource("1_lo3fh")

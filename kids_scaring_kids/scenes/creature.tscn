@@ -1,27 +1,93 @@
-[gd_scene load_steps=5 format=3 uid="uid://5g0maj1wjiqy"]
+[gd_scene load_steps=14 format=3 uid="uid://5g0maj1wjiqy"]
 
 [ext_resource type="Texture2D" uid="uid://bpns7x2ylpi78" path="res://img/creature.png" id="1_abruc"]
 [ext_resource type="Script" path="res://src/Animation/LinearAnimationComponent.cs" id="1_wbaj0"]
 [ext_resource type="Script" path="res://src/Creatures/CreatureBrainComponent.cs" id="2_x4y51"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03piv"]
+atlas = ExtResource("1_abruc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evcof"]
+atlas = ExtResource("1_abruc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhpwm"]
+atlas = ExtResource("1_abruc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40io0"]
+atlas = ExtResource("1_abruc")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aefd6"]
+atlas = ExtResource("1_abruc")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3tl3"]
+atlas = ExtResource("1_abruc")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wvq0"]
+atlas = ExtResource("1_abruc")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dw4y"]
+atlas = ExtResource("1_abruc")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q2uae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03piv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evcof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhpwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40io0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aefd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3tl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wvq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dw4y")
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yt1r7"]
 radius = 7.0
 
 [node name="Creature" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_abruc")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+sprite_frames = SubResource("SpriteFrames_q2uae")
 
 [node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("Root", "Sprite")]
 script = ExtResource("1_wbaj0")
 Root = NodePath("..")
-Sprite = NodePath("../Sprite2D")
+Sprite = NodePath("")
 Speed = 130.0
 
-[node name="CreatureBraincomponent" type="Node2D" parent="." node_paths=PackedStringArray("Root", "Animation")]
+[node name="CreatureBraincomponent" type="Node2D" parent="." node_paths=PackedStringArray("Animation", "Root")]
 script = ExtResource("2_x4y51")
-Root = NodePath("..")
 Animation = NodePath("../MovementComponent")
+Root = NodePath("..")
 
 [node name="Area2D" type="Area2D" parent="." groups=["creatures"]]
 

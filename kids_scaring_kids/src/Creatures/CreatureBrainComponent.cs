@@ -42,7 +42,9 @@ public partial class CreatureBrainComponent : Node2D
             if (TimeInLight <= 0)
             {
                 _things.Creatures.Remove(Root);
-                Root.QueueFree();
+                var sprite = Root.GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+                sprite.Play("default");
+                GetTree().CreateTimer(0.5).Timeout += SpriteOnAnimationFinished;
             }
         }
 
@@ -124,5 +126,10 @@ public partial class CreatureBrainComponent : Node2D
         var newX = Mathf.Clamp(Root.GlobalPosition.X, -_halfScreenSize.X, _halfScreenSize.X);
         var newY = Mathf.Clamp(Root.GlobalPosition.Y, -_halfScreenSize.Y, _halfScreenSize.Y);
         Root.GlobalPosition = new Vector2(newX, newY);
+    }
+
+    private void SpriteOnAnimationFinished()
+    {
+        Root.QueueFree();
     }
 }
