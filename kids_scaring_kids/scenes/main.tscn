@@ -37,10 +37,11 @@ mesh = SubResource("PlaneMesh_wivql")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("ConeDisplay", "StartButton")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("ConeDisplay", "StartButton", "ScoreLabel")]
 script = ExtResource("2_eeako")
 ConeDisplay = NodePath("ColorRect")
 StartButton = NodePath("ColorRect/Button")
+ScoreLabel = NodePath("ColorRect/RichTextLabel")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("ConeViewport", "Hero")]
 auto_translate_mode = 1
@@ -70,6 +71,27 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Turn on Torchlight"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "9999"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+visible_characters = 4
+visible_ratio = 1.33333
 
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
