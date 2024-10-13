@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://doxj21f6uh6km" path="res://sound/384876__ali_6868__right-gravel-footstep-2.wav" id="5_tykfh"]
 
 [node name="Hero" type="Node2D" node_paths=PackedStringArray("Animation", "Root")]
+texture_filter = 1
 script = ExtResource("1_ldmo7")
 Animation = NodePath("LinearAnimationComponent")
 Root = NodePath(".")
