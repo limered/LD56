@@ -28,6 +28,7 @@ shader_parameter/hero_position = Vector2(0, 0)
 shader_parameter/cone_radius_pixel = 30.0
 shader_parameter/cone_feather = 0.7
 shader_parameter/alpha_mix_factor = 0.0
+shader_parameter/rain_strenght = null
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_jgym8")

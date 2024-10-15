@@ -79,10 +79,9 @@ texture_filter = 1
 texture_repeat = 1
 sprite_frames = SubResource("SpriteFrames_q2uae")
 
-[node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("Root", "Sprite")]
+[node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("Root")]
 script = ExtResource("1_wbaj0")
 Root = NodePath("..")
-Sprite = NodePath("")
 Speed = 130.0
 
 [node name="CreatureBraincomponent" type="Node2D" parent="." node_paths=PackedStringArray("Animation", "Plop", "Root")]
