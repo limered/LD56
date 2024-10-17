@@ -23,7 +23,7 @@ float random (vec2 uv) {
 
 vec4 noise(vec2 uv){
 	float val = random(uv * TIME);
-	val = clamp(val, 0.5, 0.6);
+	val = clamp(val, 0.6, 0.7);
 	vec3 noise_color = vec3(1., 1., 1.);
 	return vec4(noise_color * val * 1., 1.);
 }
