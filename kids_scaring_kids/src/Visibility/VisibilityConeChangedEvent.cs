@@ -3,7 +3,7 @@ using Godot;
 
 namespace NewGameProject.Visibility;
 
-public class VisibilityConeChangedEvent
+public struct VisibilityConeChangedEvent
 {
-    public List<Vector2> Points { get; set; }
+    public List<Vector2> Points { get; init; }
 }
