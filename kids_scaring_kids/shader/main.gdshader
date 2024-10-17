@@ -21,37 +21,12 @@ float random (vec2 uv) {
         vec2(12.9898,78.233))) * 43758.5453123);
 }
 
-float line_sdf(vec2 p, vec2 s){
-	vec2 d = abs(p) - s;
-	return min(max(d.x, d.y), 0.0) + length(max(d, 0.0));
-}
 
-float hash(float x){
-	return fract(sin(x * 18.34) * 51.78);
-}
-
-float hash2(float x){
-	return fract(sin(x * 25.42) * 21.24);
-}
-
-vec4 rain(vec2 _uv){
-	vec4 res = vec4(0.0);
-	float size = 20.0;
-	
-	vec2 aspect = vec2(2.0, 1.0);
-	vec2 uv = _uv * size * aspect;
-	//uv.y -= TIME * 10.0;
-	vec2 gv = fract(uv) - .5;
-	
-	float x = 0.0;
-	float y = sin(TIME + sin(TIME + sin(TIME) * 0.5)) * 0.45;
-	vec2 dropPos = (gv - vec2(x, y)) / aspect;
-	
-	float drop = smoothstep(.05, .03, length(dropPos));
-	if(y < 0.0)
-		res.xyz += -drop;
-	
-	return res;
+vec4 noise(vec2 uv){
+	float val = random(uv * TIME);
+	val = clamp(val, 0.5, 0.6);
+	vec3 noise_color = vec3(1., 1., 1.);
+	return vec4(noise_color * val * 1., 1.);
 }
 
 void fragment() {
@@ -62,7 +37,7 @@ void fragment() {
 	vec2 screen_pixel = (SCREEN_UV - 0.5) * screen_size;
 	float alpha = circle_mask(screen_pixel, hero_position, cone_radius_pixel, cone_feather);
 	 
-	vec4 game_colors = (vec4(cone_color.xyz, alpha) * game_color);
+	vec4 game_colors = vec4(cone_color.xyz, alpha) * game_color * noise(SCREEN_UV);
 	vec4 end_screen = vec4(vec3(1.0-alpha), 1.0);
-	COLOR = mix(game_colors, end_screen, alpha_mix_factor) + rain(SCREEN_UV);
+	COLOR = mix(game_colors, end_screen, alpha_mix_factor);
 }
